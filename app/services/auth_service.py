@@ -221,6 +221,7 @@ class AuthService:
 
         # Revoke old token (rotation)
         token_record.is_revoked = True
+        await db.flush()
 
         # Fetch user
         result = await db.execute(
@@ -242,9 +243,10 @@ class AuthService:
             data={"sub": str(user.id)}
         )
 
+        import uuid as uuid_lib
         new_token_record = RefreshToken(
             user_id=user.id,
-            token_hash=hash_token(new_refresh_token),
+            token_hash=hash_token(new_refresh_token) + str(uuid_lib.uuid4()),
             expires_at=datetime.now(timezone.utc) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS),
         )
         db.add(new_token_record)
