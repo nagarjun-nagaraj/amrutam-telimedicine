@@ -243,13 +243,13 @@ class AuthService:
             data={"sub": str(user.id)}
         )
 
-        import uuid as uuid_lib
         new_token_record = RefreshToken(
             user_id=user.id,
-            token_hash=hash_token(new_refresh_token) + str(uuid_lib.uuid4()),
+            token_hash=hash_token(new_refresh_token),
             expires_at=datetime.now(timezone.utc) + timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS),
+            ip_address=token_record.ip_address,
+            user_agent=token_record.user_agent,
         )
-        db.add(new_token_record)
 
         return TokenResponse(
             access_token=access_token,
