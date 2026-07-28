@@ -7,14 +7,14 @@ Production-grade telemedicine backend built with FastAPI, PostgreSQL, and Redis.
 
 ## Features
 
-- 🔐 JWT authentication + MFA (TOTP)
-- 👥 Role-based access control (Patient/Doctor/Admin)
-- 📅 Doctor availability & booking system
-- 💊 Prescription management
-- 💳 Payment processing (idempotent)
-- 📊 Admin analytics dashboard
-- 🔍 Audit logging for compliance
-- 📈 Prometheus metrics + Grafana dashboards
+- JWT authentication + MFA (TOTP)
+- Role-based access control (Patient/Doctor/Admin)
+- Doctor availability & booking system
+- Prescription management
+- Payment processing (idempotent)
+- Admin analytics dashboard
+- Audit logging for compliance
+- Prometheus metrics + Grafana dashboards
 
 ---
 
